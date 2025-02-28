@@ -1,0 +1,32 @@
+{
+  "name": "melon-discord-integration",
+  "version": "1.0.0",
+  "description": "Melon Player Discord Rich Presence Integration",
+  "author": "seoseunghun3",
+  "main": "dist/main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "tsc --build && electron .",
+    "build": "tsc --build && electron-builder -mw",
+    "dist": "tsc --build"
+  },
+  "build": {
+    "productName": "MelonDiscordIntegration",
+    "appId": "com.ssh.melon-discord-integration",
+    "directories": {
+      "output": "build"
+    }
+  },
+  "devDependencies": {
+    "@types/node": "^18.16.19",
+    "electron": "^32.0.1",
+    "electron-builder": "^24.13.3",
+    "typescript": "^5.1.6"
+  },
+  "dependencies": {
+    "@xhayper/discord-rpc": "^1.2.0",
+    "active-win": "^8.0.0",
+    "dotenv": "^16.3.1",
+    "ps-list": "^7.2.0"
+  }
+}
