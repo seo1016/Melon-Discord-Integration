@@ -4,7 +4,7 @@ import iconv from "iconv-lite";
 
 export async function fetchAlbumArt(song: string, artist: string): Promise<string> {
   try {
-    console.log(`🔎 멜론에서 앨범 이미지 검색: ${song} - ${artist}`);
+    console.log(`멜론에서 앨범 이미지 검색: ${song} - ${artist}`);
 
     const searchUrl = `https://www.melon.com/search/song/index.htm?q=${encodeURIComponent(song + " " + artist)}`;
 
@@ -24,13 +24,13 @@ export async function fetchAlbumArt(song: string, artist: string): Promise<strin
     const songId = songLink?.match(/goSongDetail\('(\d+)'\)/)?.[1];
 
     if (!songId) {
-      console.warn(`⚠️ 멜론에서 곡 정보를 찾을 수 없음: ${song} - ${artist}`);
+      console.warn(`멜론에서 곡 정보를 찾을 수 없음: ${song} - ${artist}`);
       return "melon-logo";
     }
 
     const songDetailUrl = `https://www.melon.com/song/detail.htm?songId=${songId}`;
 
-    console.log(`🔗 곡 상세 페이지 이동: ${songDetailUrl}`);
+    console.log(`곡 상세 페이지 이동: ${songDetailUrl}`);
 
     const songResponse = await axios.get(songDetailUrl, {
       responseType: "arraybuffer",

@@ -5,7 +5,7 @@ const IMGUR_CLIENT_ID = process.env.IMGUR_CLIENT_ID || "";
 export async function uploadToImgur(song: string, artist: string, imageUrl: string): Promise<string> {
   try {
     if (!imageUrl.startsWith("http") || imageUrl.includes("melon-logo")) {
-      console.warn(`⚠️ 유효하지 않은 이미지 URL: ${imageUrl}`);
+      console.warn(`유효하지 않은 이미지 URL: ${imageUrl}`);
       return "melon-logo";
     }
 
