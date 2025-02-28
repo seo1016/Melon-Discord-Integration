@@ -11,7 +11,7 @@ export async function fetchAlbumArt(song: string, artist: string): Promise<strin
     const response = await axios.get(searchUrl, {
       responseType: "arraybuffer",
       headers: {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36",
+        "User-Agent": "Mozilla/5.0",
         "Referer": "https://www.melon.com/",
       },
     });
@@ -30,12 +30,10 @@ export async function fetchAlbumArt(song: string, artist: string): Promise<strin
 
     const songDetailUrl = `https://www.melon.com/song/detail.htm?songId=${songId}`;
 
-    console.log(`곡 상세 페이지 이동: ${songDetailUrl}`);
-
     const songResponse = await axios.get(songDetailUrl, {
       responseType: "arraybuffer",
       headers: {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36",
+        "User-Agent": "Mozilla/5.0",
         "Referer": "https://www.melon.com/",
       },
     });

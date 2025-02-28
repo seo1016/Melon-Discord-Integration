@@ -28,8 +28,7 @@ export async function pollMelonPlayer(): Promise<void> {
     const windows = windowManager.getWindows();
     const melonWindow = windows.find((w) => {
       const title = w.getTitle();
-      if (!title || !title.includes(" - ")) return false;
-      return processes.some((p) => p.pid === w.processId && p.name.toLowerCase().includes("melon"));
+      return title && title.includes(" - ") && processes.some((p) => p.pid === w.processId && p.name.toLowerCase().includes("melon"));
     });
 
     if (!melonWindow) return;
