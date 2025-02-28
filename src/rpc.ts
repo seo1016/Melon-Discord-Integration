@@ -2,6 +2,8 @@ import { Client } from "@xhayper/discord-rpc";
 import "dotenv/config";
 import { setReady } from "./ready";
 import { ActivityData } from "./request";
+import { fetchAlbumArt } from "./fetchAlbumArt";
+import { uploadToImgur } from "./uploadToImgur";
 
 class RPCHandler {
   private static client: Client;
@@ -9,7 +11,7 @@ class RPCHandler {
 
   public static async connect(): Promise<void> {
     RPCHandler.client = new Client({
-      clientId: process.env.CLIENT_ID || ""
+      clientId: process.env.CLIENT_ID || "",
     });
 
     RPCHandler.client.once("ready", () => {
@@ -34,13 +36,19 @@ class RPCHandler {
       return;
     }
 
+    let albumArt = await fetchAlbumArt(data.title, data.artist) ?? "melon-logo";
+
+    if (albumArt !== "melon-logo") {
+      albumArt = await uploadToImgur(data.title, data.artist, albumArt) ?? "melon-logo";
+    }
+
     RPCHandler.currentActivityData = data;
 
     await RPCHandler.client.user.setActivity({
       type: 2,
       details: `🎧 ${data.title}`,
       state: `🎤 ${data.artist}`,
-      largeImageKey: data.albumArt || "melon-logo"
+      largeImageKey: albumArt,
     });
 
     console.log(`Rich Presence 업데이트 완료: ${data.title} - ${data.artist}`);

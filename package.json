@@ -26,7 +26,10 @@
   "dependencies": {
     "@xhayper/discord-rpc": "^1.2.0",
     "active-win": "^8.0.0",
+    "axios": "^1.8.1",
+    "cheerio": "^1.0.0",
     "dotenv": "^16.4.7",
+    "iconv-lite": "^0.6.3",
     "node-window-manager": "^2.2.4",
     "ps-list": "^7.2.0"
   }
