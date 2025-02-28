@@ -1,22 +1,15 @@
-# OS별 잡파일
 .DS_Store
 Thumbs.db
 
-# 로그 파일
 *.log
 
-# node_modules (라이브러리)
 node_modules/
 
-# 빌드 결과물 (dist 폴더)
 dist/
 
-# TypeScript 빌드 정보 파일
 *.tsbuildinfo
 
-# 환경 변수 파일
 .env
 
-# 추가적으로 IDE/Editor 환경폴더(선택)
 .vscode/
 .idea/
