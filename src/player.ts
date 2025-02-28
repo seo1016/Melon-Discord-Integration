@@ -50,8 +50,6 @@ export async function pollMelonPlayer(): Promise<void> {
       albumArt: "melon-logo",
     };
 
-    await RPCHandler.clearActivity();
-    await new Promise((resolve) => setTimeout(resolve, 500));
     await RPCHandler.setActivity(data);
   } catch (err) {
     console.error("pollMelonPlayer 에러:", err);

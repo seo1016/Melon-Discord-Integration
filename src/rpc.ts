@@ -28,6 +28,12 @@ class RPCHandler {
   public static async setActivity(data: ActivityData): Promise<void> {
     if (!RPCHandler.client?.user) return;
 
+    if (RPCHandler.currentActivityData &&
+        RPCHandler.currentActivityData.title === data.title &&
+        RPCHandler.currentActivityData.artist === data.artist) {
+      return; // 같은 곡이면 업데이트 생략
+    }
+
     RPCHandler.currentActivityData = data;
 
     await RPCHandler.client.user.setActivity({
