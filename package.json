@@ -29,6 +29,12 @@
     },
     "compression": "maximum",
     "asar": true,
+    "extraFiles": [
+      {
+        "from": ".env",
+        "to": ".env"
+      }
+    ],
     "publish": [
       {
         "provider": "github",
@@ -38,13 +44,6 @@
       }
     ]
   },
-  "devDependencies": {
-    "@types/node": "^18.16.19",
-    "electron": "^34.3.0",
-    "electron-builder": "^25.1.8",
-    "electron-updater": "^5.3.0",
-    "typescript": "^5.1.6"
-  },
   "dependencies": {
     "@xhayper/discord-rpc": "^1.2.0",
     "active-win": "^8.0.0",
@@ -53,6 +52,13 @@
     "dotenv": "^16.4.7",
     "iconv-lite": "^0.6.3",
     "node-window-manager": "^2.2.4",
-    "ps-list": "^7.2.0"
+    "ps-list": "^7.2.0",
+    "electron-updater": "^5.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^18.16.19",
+    "electron": "^34.3.0",
+    "electron-builder": "^25.1.8",
+    "typescript": "^5.1.6"
   }
 }
