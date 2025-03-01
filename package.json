@@ -7,7 +7,7 @@
   "scripts": {
     "start": "electron .",
     "dev": "tsc --build && electron .",
-    "build": "tsc --build && electron-builder -mw",
+    "build": "tsc --build && electron-builder -w",
     "dist": "tsc --build"
   },
   "build": {
@@ -15,12 +15,34 @@
     "appId": "com.ssh.melon-discord-integration",
     "directories": {
       "output": "build"
-    }
+    },
+    "win": {
+      "target": "nsis",
+      "artifactName": "${productName}-Setup-${version}.${ext}",
+      "signAndEditExecutable": false,
+      "forceCodeSigning": false
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "runAfterFinish": true
+    },
+    "compression": "maximum",
+    "asar": true,
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "seoseunghun3",
+        "repo": "melon-discord-integration",
+        "releaseType": "release"
+      }
+    ]
   },
   "devDependencies": {
     "@types/node": "^18.16.19",
-    "electron": "^32.0.1",
-    "electron-builder": "^24.13.3",
+    "electron": "^34.3.0",
+    "electron-builder": "^25.1.8",
+    "electron-updater": "^5.3.0",
     "typescript": "^5.1.6"
   },
   "dependencies": {
