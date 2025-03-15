@@ -27,10 +27,6 @@ Melon Discord Integration은 Melon PC 플레이어에서 재생 중인 음악을
     
     앱이 최신 버전을 자동으로 감지하고 업데이트합니다.
     
-- **Auto Startup**
-    
-    설치 시 선택하여 윈도우 부팅 시 앱이 자동 실행됩니다.
-    
 
 ---
 
