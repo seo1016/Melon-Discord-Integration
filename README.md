@@ -59,10 +59,8 @@ git clone https://github.com/seo1016/Melon-Discord-Integration.git
 cd Melon-Discord-Integration
 npm install
 
-# 개발 모드로 실행
 npm run dev
 
-# 배포용 빌드
 npm run build
 ```
 
