@@ -31,9 +31,26 @@ export async function pollMelonPlayer(): Promise<void> {
       return title && title.includes(" - ") && processes.some((p) => p.pid === w.processId && p.name.toLowerCase().includes("melon"));
     });
 
-    if (!melonWindow) return;
+    if (!melonWindow) {
+      const defaultData: ActivityData = {
+        title: "노래 고르는 중...",
+        artist: "찾는 중...",
+        albumArt: "melon-logo",
+      };
+      await RPCHandler.setActivity(defaultData);
+      return;
+    }
 
     const titleStr = melonWindow.getTitle();
+    if (titleStr === "멜론 PC 플레이어") {
+      const defaultData: ActivityData = {
+        title: "노래 고르는 중...",
+        artist: "찾는 중...",
+        albumArt: "melon-logo",
+      };
+      await RPCHandler.setActivity(defaultData);
+      return;
+    }
 
     if (currentWindowTitle === titleStr) return;
     currentWindowTitle = titleStr;
