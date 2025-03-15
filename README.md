@@ -1,5 +1,3 @@
-# Docs
-
 # 🎧 · Melon Discord Integration
 
 Melon Discord Integration은 Melon PC 플레이어에서 재생 중인 음악을 Discord Rich Presence에 자동으로 표시해주는 앱입니다.
