@@ -9,14 +9,14 @@ let lastProcessId: number | null = null;
 export async function pollMelonPlayer(): Promise<void> {
   try {
     const processes = await psList();
-    const melonProcess = processes.find((p) => p.name.toLowerCase().includes("melon"));
+    const melonProcess = processes.find((p) =>
+      p.name.toLowerCase().includes("melon")
+    );
 
     if (!melonProcess) {
-      if (lastProcessId !== null) {
-        await RPCHandler.clearActivity();
-        currentWindowTitle = "";
-        lastProcessId = null;
-      }
+      await RPCHandler.clearActivity();
+      currentWindowTitle = "";
+      lastProcessId = null;
       return;
     }
 
@@ -28,7 +28,7 @@ export async function pollMelonPlayer(): Promise<void> {
     const windows = windowManager.getWindows();
     const melonWindow = windows.find((w) => {
       const title = w.getTitle();
-      return title && title.includes(" - ") && processes.some((p) => p.pid === w.processId && p.name.toLowerCase().includes("melon"));
+      return title && processes.some((p) => p.pid === w.processId && p.name.toLowerCase().includes("melon"));
     });
 
     if (!melonWindow) {
@@ -37,16 +37,21 @@ export async function pollMelonPlayer(): Promise<void> {
     }
 
     const titleStr = melonWindow.getTitle();
+
     if (titleStr === "멜론 PC 플레이어") {
-      const defaultData: ActivityData = { title: "노래 고르는 중...", artist: "찾는 중...", albumArt: "melon-logo" };
+      const defaultData: ActivityData = {
+        title: "노래 고르는 중...",
+        artist: "찾는 중...",
+        albumArt: "melon-logo"
+      };
       await RPCHandler.setActivity(defaultData);
       return;
     }
 
     if (currentWindowTitle === titleStr) return;
-    
-    currentWindowTitle = titleStr;
 
+    currentWindowTitle = titleStr;
+    
     const [songTitleRaw, artistRaw] = titleStr.split(" - ");
 
     if (!songTitleRaw || !artistRaw) return;
@@ -57,7 +62,7 @@ export async function pollMelonPlayer(): Promise<void> {
     const data: ActivityData = {
       title: songTitle,
       artist: artist,
-      albumArt: "melon-logo",
+      albumArt: "melon-logo"
     };
 
     await RPCHandler.setActivity(data);
