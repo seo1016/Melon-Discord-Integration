@@ -39,8 +39,8 @@
     "publish": [
       {
         "provider": "github",
-        "owner": "seoseunghun3",
-        "repo": "melon-discord-integration",
+        "owner": "seo1016",
+        "repo": "Melon-Discord-Integration",
         "releaseType": "release"
       }
     ]

@@ -9,6 +9,16 @@ dotenv.config();
 let mainWindow: BrowserWindow | null = null;
 const gotLock = app.requestSingleInstanceLock();
 
+const enableAutoStartup = process.env.AUTO_START === "true";
+if (enableAutoStartup) {
+  app.setLoginItemSettings({
+    openAtLogin: true,
+    path: app.getPath("exe"),
+    args: []
+  });
+  console.log("자동 실행이 활성화되었습니다.");
+}
+
 if (!gotLock) {
   app.quit();
 } else {
@@ -22,6 +32,7 @@ if (!gotLock) {
     
     await RPCHandler.connect();
     setInterval(pollMelonPlayer, 2000);
+
     autoUpdater.checkForUpdatesAndNotify();
   });
   
@@ -37,4 +48,8 @@ autoUpdater.on("update-available", () => {
 autoUpdater.on("update-downloaded", () => {
   console.log("업데이트 다운로드 완료. 앱을 재시작합니다.");
   autoUpdater.quitAndInstall();
+});
+
+autoUpdater.on("error", (err) => {
+  console.error("업데이트 중 에러 발생:", err);
 });
