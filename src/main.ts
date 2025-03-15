@@ -7,8 +7,8 @@ import { autoUpdater } from "electron-updater";
 dotenv.config();
 
 let mainWindow: BrowserWindow | null = null;
-
 const gotLock = app.requestSingleInstanceLock();
+
 if (!gotLock) {
   app.quit();
 } else {
@@ -17,21 +17,16 @@ if (!gotLock) {
       width: 300,
       height: 200,
       show: false,
-      webPreferences: {
-        nodeIntegration: true
-      }
+      webPreferences: { nodeIntegration: true }
     });
-
+    
     await RPCHandler.connect();
     setInterval(pollMelonPlayer, 2000);
-
     autoUpdater.checkForUpdatesAndNotify();
   });
-
+  
   app.on("window-all-closed", () => {
-    if (process.platform !== "darwin") {
-      app.quit();
-    }
+    if (process.platform !== "darwin") app.quit();
   });
 }
 

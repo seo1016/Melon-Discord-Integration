@@ -7,8 +7,7 @@ const CACHE_FILE = path.join(__dirname, "album_cache.json");
 function loadCache(): Record<string, string> {
   try {
     if (fs.existsSync(CACHE_FILE)) {
-      const data = fs.readFileSync(CACHE_FILE, "utf8");
-      return JSON.parse(data);
+      return JSON.parse(fs.readFileSync(CACHE_FILE, "utf8"));
     }
   } catch (error) {
     console.error("캐시 불러오기 실패:", error);
