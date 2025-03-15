@@ -2,7 +2,7 @@
   "name": "melon-discord-integration",
   "version": "1.0.0",
   "description": "Melon Player Discord Rich Presence Integration",
-  "author": "seoseunghun3",
+  "author": "서승훈",
   "main": "dist/main.js",
   "scripts": {
     "start": "electron .",
