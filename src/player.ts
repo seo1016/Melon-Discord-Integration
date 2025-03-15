@@ -10,7 +10,8 @@ export async function pollMelonPlayer(): Promise<void> {
   try {
     const processes = await psList();
     const melonProcess = processes.find((p) =>
-      p.name.toLowerCase().includes("melon")
+      p.name.toLowerCase().includes("melon") &&
+      p.name.toLowerCase().includes("player")
     );
 
     if (!melonProcess) {
