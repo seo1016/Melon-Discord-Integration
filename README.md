@@ -34,7 +34,6 @@ Melon Discord Integration은 Melon PC 플레이어에서 재생 중인 음악을
 
 1. [릴리즈 페이지](https://github.com/seo1016/Melon-Discord-Integration/releases)에서 최신 버전의 설치 프로그램을 다운로드합니다.
 2. 설치 프로그램을 실행한 뒤, 안내에 따라 설치합니다.
-    - 자동 실행 옵션을 체크하면 컴퓨터 재부팅 시 자동 실행됩니다.
 
 ---
 
